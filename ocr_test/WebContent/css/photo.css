@@ -1,0 +1,28 @@
+
+
+
+.photo{
+	height: 400px;
+	width: 400px;
+	margin: 0 auto;
+	
+}
+
+
+.photodiv{
+	height: 404px;
+	width: 404px;
+	margin: 0 auto;
+	border:2px solid red;
+	background-image:url(../images/photo.png);
+	margin-top: 10%;
+	background-size:100% 100%;
+}
+
+.cameraDiv{
+	border:2px solid red;
+	height: 40px;
+	width: 400px;
+	margin: 0 auto;
+}
+

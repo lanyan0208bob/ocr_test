@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 读取properties文件  通常设置数据库连接信息	 -->
+	<properties resource="db.properties"></properties>
+	<!-- 设置别名 -->
+	<typeAliases>
+		<!-- 为指定包下所有类设置别名  默认别名为类名 -->
+		<package name="com.jy.entity"/>
+	</typeAliases>
+	
+	<mappers>
+		<!-- 配置映射文件    需要添加修改
+		<mapper resource="cn/lanyan/mapper/DeptMapper.xml" />
+		<mapper resource="cn/lanyan/mapper/EmployeeMapper.xml" />-->
+	</mappers>
+</configuration>

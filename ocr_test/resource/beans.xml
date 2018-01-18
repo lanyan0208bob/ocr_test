@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- 解读properties配置文件   -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:db.properties"/>
+	</bean>
+	<!-- 数据源   -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${driver}"></property>
+		<property name="jdbcUrl" value="${url}"></property>
+		<property name="user" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="initialPoolSize" value="2"></property>
+		<property name="maxPoolSize"  value="15"></property>
+		<property name="maxIdleTime"  value="1800"></property>
+		<property name="acquireIncrement"  value="10" ></property>
+		<property name="acquireRetryDelay" value="100"></property>
+		<property name="breakAfterAcquireFailure" value="false"></property>
+		<property name="idleConnectionTestPeriod" value="18000"></property>
+		<property name="testConnectionOnCheckout" value="false"></property>
+		<property name="testConnectionOnCheckin" value="false"></property>
+		<property name="automaticTestTable" value="c3p0_connection_test"></property>
+		<property name="checkoutTimeout" value="30000"></property>
+	</bean>
+	
+	 <!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:comp/env/jdbc/app</value>
+		</property>
+		</bean> --> 
+	<!-- spring创建SqlSessionFactory对象 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource" />
+	  <property name="mapperLocations" value="classpath*:com/daxia/mapper/*.xml" />
+	</bean>
+	<!-- 配置事务管理器 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<!-- 事务通知 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<!-- propagation 事务的传播特性
+				REQUIRED  如果当前有事务使用当前事务，如果当前没有事务开启新事务
+			 -->
+				<tx:method name="save*" propagation="REQUIRED"/>
+      			<tx:method name="del*" propagation="REQUIRED"/>
+      			<tx:method name="update*" propagation="REQUIRED"/>
+      			<tx:method name="edit*" propagation="REQUIRED"/>
+     			<tx:method name="add*" propagation="REQUIRED"/>
+      			<tx:method name="find*" propagation="REQUIRED"/>
+      			<tx:method name="get*" propagation="REQUIRED"/>
+      			<tx:method name="select*" propagation="REQUIRED"/>
+      			<tx:method name="*"  read-only="true"/>
+
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut expression="execution(* com.daxia.service.impl.*.*(..))" id="pointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+	</aop:config>
+	<!-- mapper扫描 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+		<property name="basePackage" value="com.daxia.mapper"/>
+	</bean>
+	<!-- 包扫描 -->
+	<context:component-scan base-package="com.daxia"/>
+</beans>
