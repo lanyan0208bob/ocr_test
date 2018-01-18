@@ -2,16 +2,16 @@
 
 
 .photo{
-	height: 400px;
-	width: 400px;
+	height: 600px;
+	width: 600px;
 	margin: 0 auto;
 	
 }
 
 
 .photodiv{
-	height: 404px;
-	width: 404px;
+	height: 604px;
+	width: 604px;
 	margin: 0 auto;
 	border:2px solid red;
 	background-image:url(../images/photo.png);
@@ -21,8 +21,18 @@
 
 .cameraDiv{
 	border:2px solid red;
-	height: 40px;
+	height: 160px;
 	width: 400px;
 	margin: 0 auto;
 }
+.camerabutton{
+	margin-top:80px;
+	margin-bottom:10px;
+	margin-left: 110px;
+	width: 180px;
+	height: 80px;
+	font-size: 32px;
+}
+
+
 

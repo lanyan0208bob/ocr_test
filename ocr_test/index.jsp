@@ -25,7 +25,7 @@
 </div>
 
 <div class="cameraDiv">
-<button  class="btn btn-primary camerabutton">拍照</button>
+<button  class="camerabutton">拍照</button>
 
 </div>
 <div class="photodiv">
