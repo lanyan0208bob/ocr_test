@@ -14,10 +14,12 @@
 	width: 604px;
 	margin: 0 auto;
 	border:2px solid red;
-	background-image:url(../images/photo.png);
+	/*  background-image:url(../images/photo.png);*/
 	margin-top: 10%;
 	background-size:100% 100%;
 }
+
+
 
 .cameraDiv{
 	border:2px solid red;
@@ -26,7 +28,7 @@
 	margin: 0 auto;
 }
 .camerabutton{
-	margin-top:80px;
+	margin-top:40px;
 	margin-bottom:10px;
 	margin-left: 110px;
 	width: 180px;
@@ -34,5 +36,19 @@
 	font-size: 32px;
 }
 
+
+.infoDiv{
+	margin-top:40px;
+}
+.infotable{
+	width: 50%;
+	margin:0 auto;
+}
+
+.infoFont{
+	font-size: 32px;
+	
+	
+}
 
 

@@ -20,28 +20,28 @@
         password="root">
     </jdbcConnection> -->
      <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://localhost:3306/ocr?useUnicode=true&amp;characterEncoding=UTF-8"
+        connectionURL="jdbc:mysql://47.94.223.60:3306/ocr_test?useUnicode=true&amp;characterEncoding=UTF-8"
         userId="root"
-        password="root">
+        password="123456">
     </jdbcConnection>
       <!-- 类型转换 -->  
     <javaTypeResolver >
       <property name="forceBigDecimals" value="false" />
     </javaTypeResolver>
 
-    <javaModelGenerator targetPackage="com.jy.entity" targetProject="e:/dbdemo/">
+    <javaModelGenerator targetPackage="com.daxia.entity" targetProject="e:/dbdemo/">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
 
-    <sqlMapGenerator targetPackage="com.jy.mapper"  targetProject="e:/dbdemo/">
+    <sqlMapGenerator targetPackage="com.daxia.mapper"  targetProject="e:/dbdemo/">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
 
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.jy.mapper"  targetProject="e:/dbdemo/">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.daxia.mapper"  targetProject="e:/dbdemo/">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
-    <table schema="app" tableName="ocr_account" domainObjectName="OcrAccount" enableUpdateByExample="false" 
+    <table schema="ocr_test" tableName="ocr_account" domainObjectName="OcrAccount" enableUpdateByExample="false" 
     		enableCountByExample="false">
       <property name="useActualColumnNames" value="true"/>
       <columnOverride column="DATE_FIELD" property="startDate" />

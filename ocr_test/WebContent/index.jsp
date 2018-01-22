@@ -11,13 +11,16 @@
  	<link rel="stylesheet" type="text/css" href="css/photo.css" />  
     <script src="js/jquery-3.2.1.min.js"></script> 
     <script src="js/bootstrap.min.js"></script> 
+    <script src="js/photo.js"></script> 
 </head>
 <body>
 <div>
 
 
 
-<div class="photodiv">
+<div class="photodiv" id="photodiv">
+<img alt="" src="images/photo.png" class="photo" id="photo">
+
 <!--
 <button id="shoot" class=" photo"><p class="iconfont cameraImg ">&#xe61b;</p></button>
   <input type="file" accept="image/*" capture="camera" style="visibility: hidden;">-->
@@ -25,11 +28,25 @@
 </div>
 
 <div class="cameraDiv">
-<button  class="btn btn-primary camerabutton">拍照</button>
+<form id="BotanyDTOcamera" method="post" enctype="multipart/form-data">
+ <input type="file" accept="image/*" capture="camera" style="visibility: hidden;" id="fileImage">
+ </form>
+<button  class="btn btn-primary camerabutton" onclick="tophoto()">拍照</button>
 
 </div>
-<div class="photodiv">
-
+<div class="infoDiv">
+<table class="table-condensed table infotable">
+<thead>
+<tr class="active"><th class="infoFont">名称</th><th class="infoFont">相似度</th></tr>
+</thead>
+<tbody id="BotanyDTOtbody">
+<!--  
+<tr class="success"><td class="infoFont">吉娃莲</td><td class="infoFont">90%</td></tr>
+<tr class="warning"><td class="infoFont">白菜</td><td class="infoFont">60%</td></tr>
+<tr class="danger"><td class="infoFont">小汤山大白菜</td><td class="infoFont">30%</td></tr>-->
+</tbody>
+	</table>
+	
 
 </div>
 <!--  
@@ -46,15 +63,14 @@
     </select></td>
 </tr>
 -->
-</tbody>
 
-
-</table>
 <!-- 
 <p>相机</p>
 <p><input type="file" accept="image/*" capture="camera"></p>
 <p>类型</p>
 <p>植物</p> -->
 </div>
+ <script src="js/photo.js"></script> 
 </body>
+ 
 </html>
