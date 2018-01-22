@@ -13,8 +13,8 @@
 	height: 604px;
 	width: 604px;
 	margin: 0 auto;
-	border:2px solid red;
-	/*  background-image:url(../images/photo.png);*/
+	/* border:2px solid red;
+	 background-image:url(../images/photo.png);*/
 	margin-top: 10%;
 	background-size:100% 100%;
 }
@@ -22,7 +22,7 @@
 
 
 .cameraDiv{
-	border:2px solid red;
+	/*border:2px solid red;*/
 	height: 160px;
 	width: 400px;
 	margin: 0 auto;
