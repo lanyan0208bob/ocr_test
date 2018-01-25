@@ -14,63 +14,15 @@
     <script src="js/photo.js"></script> 
 </head>
 <body>
-<div>
-
-
-
-<div class="photodiv" id="photodiv">
-<img alt="" src="images/photo.png" class="photo" id="photo">
-
-<!--
-<button id="shoot" class=" photo"><p class="iconfont cameraImg ">&#xe61b;</p></button>
-  <input type="file" accept="image/*" capture="camera" style="visibility: hidden;">-->
-
+<div class="indexdiv">
+<ul class="list-group">
+	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/botany.jsp" role="button"><span class="titleStyle">植物识别</span></a></li>
+	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/animal.jsp" role="button"><span class="titleStyle">动物识别</span></a></li>
+	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/food.jsp" role="button"><span class="titleStyle">菜谱识别</span></a></li>
+	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/food.jsp" role="button"><span class="titleStyle">菜谱识别</span></a></li>
+	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/food.jsp" role="button"><span class="titleStyle">菜谱识别</span></a></li>
+</ul>
 </div>
-
-<div class="cameraDiv">
-<form id="BotanyDTOcamera" method="post" enctype="multipart/form-data">
- <input type="file" accept="image/*" capture="camera" style="visibility: hidden;" id="fileImage">
- </form>
-<button  class="btn btn-primary camerabutton" onclick="tophoto()">拍照</button>
-
-</div>
-<div class="infoDiv">
-<table class="table-condensed table infotable">
-<thead>
-<tr class="active"><th class="infoFont">名称</th><th class="infoFont">相似度</th></tr>
-</thead>
-<tbody id="BotanyDTOtbody">
-<!--  
-<tr class="success"><td class="infoFont">吉娃莲</td><td class="infoFont">90%</td></tr>
-<tr class="warning"><td class="infoFont">白菜</td><td class="infoFont">60%</td></tr>
-<tr class="danger"><td class="infoFont">小汤山大白菜</td><td class="infoFont">30%</td></tr>-->
-</tbody>
-	</table>
-	
-
-</div>
-<!--  
-</td>
-</tr>
-<tr>
-<td >类型:</td>
-<td ><select  class="form-control">
-      <option>植物识别</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select></td>
-</tr>
--->
-
-<!-- 
-<p>相机</p>
-<p><input type="file" accept="image/*" capture="camera"></p>
-<p>类型</p>
-<p>植物</p> -->
-</div>
- <script src="js/photo.js"></script> 
 </body>
  
 </html>

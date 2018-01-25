@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daxia.dto.BotanyDTO;
+import com.daxia.dto.FoodDTO;
 import com.daxia.dto.Respon;
 import com.daxia.entity.OcrAccount;
 
@@ -25,7 +26,9 @@ public interface OcrService {
 	 */
 	String savePicture(MultipartFile file) throws IllegalStateException, IOException;
 	
-	Respon<List<BotanyDTO>> getBotanyDTOList(MultipartFile file);
+	Respon<List<BotanyDTO>> getBotanyDTOList(MultipartFile file,int num);
+	Respon<List<FoodDTO>> getFoodList(MultipartFile file);
+	
 	/**
 	 * 
 	* @Title: getAuth 

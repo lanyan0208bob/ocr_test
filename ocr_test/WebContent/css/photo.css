@@ -1,6 +1,14 @@
 
+.indexdiv{
 
-
+	width: 504px;
+	margin: 0 auto;
+/* 	border:2px solid red;*/
+	margin-top: 300px;
+}
+.titleStyle{
+	font-size: 56px;
+}
 .photo{
 	height: 600px;
 	width: 600px;
@@ -14,8 +22,8 @@
 	width: 604px;
 	margin: 0 auto;
 	/* border:2px solid red;
-	 background-image:url(../images/photo.png);*/
-	margin-top: 10%;
+	 background-image:url(../images/photo.png);
+	margin-top: 10%;*/
 	background-size:100% 100%;
 }
 
@@ -28,9 +36,17 @@
 	margin: 0 auto;
 }
 .camerabutton{
-	margin-top:40px;
+	margin-top:20px;
 	margin-bottom:10px;
 	margin-left: 110px;
+	width: 180px;
+	height: 80px;
+	font-size: 32px;
+	border: 1px solid blue;
+}
+
+
+.backbutton{
 	width: 180px;
 	height: 80px;
 	font-size: 32px;
@@ -47,8 +63,17 @@
 
 .infoFont{
 	font-size: 32px;
-	
-	
+
 }
 
+.infoFonticon{
+	font-size: 48px;
+	color: blue;
+
+}
+.infoFonticonback{
+	padding-left:30px;
+	font-size: 68px;
+	color: #4646ff;
+}
 

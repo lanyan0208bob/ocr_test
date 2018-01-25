@@ -13,48 +13,8 @@
     <script src="js/bootstrap.min.js"></script> 
 </head>
 <body>
-<div>
-
-
-
-<div class="photodiv">
-<!--
-<button id="shoot" class=" photo"><p class="iconfont cameraImg ">&#xe61b;</p></button>
-  <input type="file" accept="image/*" capture="camera" style="visibility: hidden;">-->
-
-</div>
-
-<div class="cameraDiv">
-<button  class="camerabutton">拍照</button>
-
-</div>
-<div class="photodiv">
-
-
-</div>
-<!--  
-</td>
-</tr>
-<tr>
-<td >类型:</td>
-<td ><select  class="form-control">
-      <option>植物识别</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select></td>
-</tr>
--->
-</tbody>
-
-
-</table>
-<!-- 
-<p>相机</p>
-<p><input type="file" accept="image/*" capture="camera"></p>
-<p>类型</p>
-<p>植物</p> -->
-</div>
+<ul class="list-group">
+	
+</ul>
 </body>
 </html>

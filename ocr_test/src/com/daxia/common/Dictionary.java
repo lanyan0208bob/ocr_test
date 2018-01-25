@@ -34,6 +34,8 @@ public class Dictionary {
 	 * GRANT_TYPE
 	 */
 	public final static String BOTANY_PATH="BOTANY_PATH";
+	public final static String ANIMAL_PATH="ANIMAL_PATH";
+	public final static String FOOD_PATH="FOOD_PATH";
 	
 	
 	

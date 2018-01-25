@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.daxia.common.Common;
 import com.daxia.common.Dictionary;
 import com.daxia.dto.BotanyDTO;
+import com.daxia.dto.FoodDTO;
 import com.daxia.dto.Respon;
 import com.daxia.entity.OcrAccount;
 import com.daxia.mapper.ConfigMapper;
@@ -34,6 +36,7 @@ import com.google.gson.reflect.TypeToken;
 
 @Service
 public class OcrServiceImpl implements OcrService{
+	private Logger log=Logger.getLogger(OcrServiceImpl.class);
 
 	@Autowired
 	private ConfigMapper configMapper;
@@ -58,7 +61,7 @@ public class OcrServiceImpl implements OcrService{
 		
 	}
 	@Override
-	public Respon<List<BotanyDTO>> getBotanyDTOList(MultipartFile file) {
+	public Respon<List<BotanyDTO>> getBotanyDTOList(MultipartFile file,int num) {
 		// TODO Auto-generated method stub
 		String path;
 		Respon<List<BotanyDTO>> resp=new Respon<List<BotanyDTO>>();
@@ -69,7 +72,7 @@ public class OcrServiceImpl implements OcrService{
 				//识别
 //				OcrAccount ocr=this. getOcrAccount();
 				try {
-					resp=	botanyDTOOCR(path);
+					resp=	botanyDTOOCR(path, num);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -220,13 +223,22 @@ public class OcrServiceImpl implements OcrService{
 		
 	}
 	
-	public  Respon< List<BotanyDTO>> botanyDTOOCR(String path) throws Exception{
+	public  Respon< List<BotanyDTO>> botanyDTOOCR(String path,int num) throws Exception{
 
 		long beginTime =System.currentTimeMillis();
         byte[] imgData = FileUtil.readFileByBytes(path);
         String imgStr = Base64Util.encode(imgData);
         String params = URLEncoder.encode("image", "UTF-8") + "=" + URLEncoder.encode(imgStr, "UTF-8");
-       String vehicleLicensePath=configMapper.selectByCode(Dictionary.BOTANY_PATH);
+      String type="";
+        if(num==0){
+        	type=Dictionary.BOTANY_PATH;
+        }else if(num==1){
+        	type=Dictionary.ANIMAL_PATH;
+        }else{
+        	type=Dictionary.BOTANY_PATH;
+        }
+       String vehicleLicensePath=configMapper.selectByCode(type);
+       log.info("url:"+vehicleLicensePath);
        OcrAccount ocr=    this.getOcrAccount();
         String result = HttpUtil.post(vehicleLicensePath, ocr.getAccess_token(), params);
 //        {"log_id": 832502857, "words_result_num": 10, "words_result": {"品牌型号": {"words": "解放牌CA4257P2K2T1EA"}, "发证日期": {"words": "20130720"}, "使用性质": {"words": "货运"}, "发动机号码": {"words": "51676680"}, "号牌号码": {"words": "蒙E76258"}, "所有人": {"words": "呼伦贝尔市晓明运输有限公司"}, "住址": {"words": "内蒙古自治区呼伦贝尔市鄂温克族自治旗巴彦托海镇八居G安居小区5号楼2单元4层2号"}, "注册日期": {"words": "20101207"}, "车辆识别代号": {"words": "LFWSRXNH6AAD38754"}, "车辆类型": {"words": "重型半挂牵引车"}}}
@@ -275,6 +287,94 @@ public class OcrServiceImpl implements OcrService{
 		
 		
 		
+	}
+	public  Respon< List<FoodDTO>> foodDTOOCR(String path) throws Exception{
+
+		long beginTime =System.currentTimeMillis();
+        byte[] imgData = FileUtil.readFileByBytes(path);
+        String imgStr = Base64Util.encode(imgData);
+        String params = URLEncoder.encode("image", "UTF-8") + "=" + URLEncoder.encode(imgStr, "UTF-8");
+    
+       String vehicleLicensePath=configMapper.selectByCode(Dictionary.FOOD_PATH);
+       log.info("url:"+vehicleLicensePath);
+       OcrAccount ocr=    this.getOcrAccount();
+        String result = HttpUtil.post(vehicleLicensePath, ocr.getAccess_token(), params);
+//        {"log_id": 832502857, "words_result_num": 10, "words_result": {"品牌型号": {"words": "解放牌CA4257P2K2T1EA"}, "发证日期": {"words": "20130720"}, "使用性质": {"words": "货运"}, "发动机号码": {"words": "51676680"}, "号牌号码": {"words": "蒙E76258"}, "所有人": {"words": "呼伦贝尔市晓明运输有限公司"}, "住址": {"words": "内蒙古自治区呼伦贝尔市鄂温克族自治旗巴彦托海镇八居G安居小区5号楼2单元4层2号"}, "注册日期": {"words": "20101207"}, "车辆识别代号": {"words": "LFWSRXNH6AAD38754"}, "车辆类型": {"words": "重型半挂牵引车"}}}
+//        log.info("百度识别行驶证:-----"+result);
+    	long times =System.currentTimeMillis()-beginTime;
+//    	log.info("百度识别行驶证耗时："+times);
+        Map<String, Object> resultMap = new Gson().fromJson(result, new TypeToken<Map<String, Object>>() {}.getType());
+      
+        
+        Respon< List<FoodDTO>> resp=new Respon<List<FoodDTO>>();
+        List<FoodDTO> list=new ArrayList<FoodDTO>();
+        
+        
+        if(resultMap!=null){
+        	if(resultMap.get("error_code")==null){//成功
+        	//result:{"log_id": 343123361707834035, "result": {"score": 0.85536277294159, "name": "非植物"}}
+        	//result:{"log_id": 1016645712119177339, "result": [{"score": 0.9872915148735, "name": "西瓜"}, {"score": 0.0042934538796544, "name": "哈密瓜"}, {"score": 0.0031954871956259, "name": "小西瓜"}, {"score": 0.0013184666167945, "name": "地雷瓜"}, {"score": 0.00077596440678462, "name": "西瓜叶子"}]}
+//        		if("[".indexOf(resultMap.get("result").toString())>=0){
+//        			System.out.println(2313);
+//        		}
+        		if((resultMap.get("result").toString()).indexOf("[")>=0){
+        			list= new Gson().fromJson(resultMap.get("result").toString(), new TypeToken<List<FoodDTO>>() {}.getType());
+        		}else{
+        			FoodDTO	dto=new Gson().fromJson(resultMap.get("result").toString(), new TypeToken<FoodDTO>() {}.getType());
+        			list.add(dto);
+        		}
+        		
+        		resp.setData(list);
+        		resp.setCode(Common.SUCCESS.getCode());
+        		resp.setMessage(Common.SUCCESS.getMsg());
+        	}else{
+      		resp.setCode(resultMap.get("error_code").toString());
+      		resp.setMessage((String)resultMap.get("error_msg"));
+      		
+        	}
+        }else{
+        	resp.setCode(Common.NO_RESPONSE.getCode());
+      		resp.setMessage(Common.NO_RESPONSE.getCode());
+        	 
+ 	 }
+    	
+        return resp;
+   
+
+		
+		
+		
+		
+	}
+	@Override
+	public Respon<List<FoodDTO>> getFoodList(MultipartFile file) {
+
+		// TODO Auto-generated method stub
+		String path;
+		Respon<List<FoodDTO>> resp=new Respon<List<FoodDTO>>();
+		try {
+			path = this.savePicture(file);
+//			path="111111";
+			if(path!=null){
+				//识别
+//				OcrAccount ocr=this. getOcrAccount();
+				try {
+					resp=	foodDTOOCR(path);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					resp.setCode(Common.FAIL.getCode());
+					resp.setMessage(e.getMessage());
+				}
+			}
+		}  catch (Exception e) {
+			// TODO Auto-generated catch block
+			resp.setCode(Common.FAIL.getCode());
+			resp.setMessage(e.getMessage());
+		}
+		
+		return resp;
+	
 	}
 
 	

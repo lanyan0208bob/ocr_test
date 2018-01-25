@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daxia.dto.BotanyDTO;
+import com.daxia.dto.FoodDTO;
 import com.daxia.dto.Respon;
 import com.daxia.service.OcrService;
 
@@ -28,7 +30,7 @@ import com.daxia.service.OcrService;
 @Controller
 @RequestMapping("/ocr")
 public class OcrController {
-
+	private Logger log=Logger.getLogger(OcrController.class);
 @Autowired
 private  OcrService ocrService;
 	
@@ -44,10 +46,26 @@ private  OcrService ocrService;
 	@RequestMapping("/botany")
 	@ResponseBody
 	public Respon<List<BotanyDTO>> botanyOcr(@RequestParam(value = "file", required = false) MultipartFile file,HttpServletRequest request,HttpServletResponse response){
-		
-		return ocrService.getBotanyDTOList(file);
+		log.info("植物识别-----");
+		return ocrService.getBotanyDTOList(file,0);
 		
 	}
+	@RequestMapping("/animal")
+	@ResponseBody
+	public Respon<List<BotanyDTO>> animalOcr(@RequestParam(value = "file", required = false) MultipartFile file,HttpServletRequest request,HttpServletResponse response){
+		log.info("动物识别-----");
+		return ocrService.getBotanyDTOList(file,1);
+		
+	}
+	@RequestMapping("/food")
+	@ResponseBody
+	public Respon<List<FoodDTO>> foodOcr(@RequestParam(value = "file", required = false) MultipartFile file,HttpServletRequest request,HttpServletResponse response){
+		log.info("食材识别-----");
+		return ocrService.getFoodList(file);
+		
+	}
+	
+	
 //	@RequestMapping("/botany")
 //	@ResponseBody
 //	public Respon<List<BotanyDTO>> botanyOcr(String base64){
