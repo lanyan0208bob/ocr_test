@@ -57,11 +57,25 @@ private  OcrService ocrService;
 		return ocrService.getBotanyDTOList(file,1);
 		
 	}
+	@RequestMapping("/car")
+	@ResponseBody
+	public Respon<List<BotanyDTO>> carOcr(@RequestParam(value = "file", required = false) MultipartFile file,HttpServletRequest request,HttpServletResponse response){
+		log.info("车型识别-----");
+		return ocrService.getBotanyDTOList(file,2);
+		
+	}
 	@RequestMapping("/food")
 	@ResponseBody
 	public Respon<List<FoodDTO>> foodOcr(@RequestParam(value = "file", required = false) MultipartFile file,HttpServletRequest request,HttpServletResponse response){
 		log.info("食材识别-----");
-		return ocrService.getFoodList(file);
+		return ocrService.getFoodList(file,0);
+		
+	}
+	@RequestMapping("/logo")
+	@ResponseBody
+	public Respon<List<FoodDTO>> logoOcr(@RequestParam(value = "file", required = false) MultipartFile file,HttpServletRequest request,HttpServletResponse response){
+		log.info("商标识别-----");
+		return ocrService.getFoodList(file,1);
 		
 	}
 	

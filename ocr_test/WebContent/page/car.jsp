@@ -11,11 +11,12 @@
  	<link rel="stylesheet" type="text/css" href="../css/photo.css" />  
     <script src="../js/jquery-3.2.1.min.js"></script> 
     <script src="../js/bootstrap.min.js"></script> 
-      <script src="../js/pictureUtils.js"></script> 
+    <script src="../js/pictureUtils.js"></script>  
 </head>
 <body>
 <div>
 <span class="iconfont infoFonticonback" onclick="toback()">&#xe625;</span>
+
 
 
 <div class="photodiv" id="photodiv">
@@ -37,7 +38,7 @@
 <div class="infoDiv">
 <table class="table-condensed table infotable">
 <thead>
-<tr class="active"><th class="infoFont">名称</th><th class="infoFont">卡路里含量</th><th class="infoFont">相似度</th></tr>
+<tr class="active"><th class="infoFont">名称</th><th class="infoFont">年款</th><th class="infoFont">相似度</th></tr>
 </thead>
 <tbody id="BotanyDTOtbody">
 <!--  
@@ -70,7 +71,7 @@
 <p>类型</p>
 <p>植物</p> -->
 </div>
-  <script src="../js/food.js"></script> 
+  <script src="../js/car.js"></script> 
   <script src="../js/pictureOcr.js"></script>  
 </body>
 

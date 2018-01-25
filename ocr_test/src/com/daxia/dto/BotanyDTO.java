@@ -19,6 +19,15 @@ private String name;
  * 相似度
  */
 private double score;
+
+private String year;
+
+public String getYear() {
+	return year;
+}
+public void setYear(String year) {
+	this.year = year;
+}
 public String getName() {
 	return name;
 }

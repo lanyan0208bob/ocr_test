@@ -36,7 +36,8 @@ public class Dictionary {
 	public final static String BOTANY_PATH="BOTANY_PATH";
 	public final static String ANIMAL_PATH="ANIMAL_PATH";
 	public final static String FOOD_PATH="FOOD_PATH";
-	
+	public final static String CAR_PATH="CAR_PATH";
+	public final static String LOGO_PATH="LOGO_PATH";
 	
 	
 	

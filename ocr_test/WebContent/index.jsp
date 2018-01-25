@@ -18,9 +18,9 @@
 <ul class="list-group">
 	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/botany.jsp" role="button"><span class="titleStyle">植物识别</span></a></li>
 	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/animal.jsp" role="button"><span class="titleStyle">动物识别</span></a></li>
-	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/food.jsp" role="button"><span class="titleStyle">菜谱识别</span></a></li>
-	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/food.jsp" role="button"><span class="titleStyle">菜谱识别</span></a></li>
-	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/food.jsp" role="button"><span class="titleStyle">菜谱识别</span></a></li>
+	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/car.jsp" role="button"><span class="titleStyle">车型识别</span></a></li>
+	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/food.jsp" role="button"><span class="titleStyle">菜品识别</span></a></li>
+	<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="page/logo.jsp" role="button"><span class="titleStyle">商标识别</span></a></li>
 </ul>
 </div>
 </body>

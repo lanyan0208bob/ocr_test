@@ -37,7 +37,7 @@
 <div class="infoDiv">
 <table class="table-condensed table infotable">
 <thead>
-<tr class="active"><th class="infoFont">名称</th><th class="infoFont">卡路里含量</th><th class="infoFont">相似度</th></tr>
+<tr class="active"><th class="infoFont">名称</th><th class="infoFont">相似度</th></tr>
 </thead>
 <tbody id="BotanyDTOtbody">
 <!--  
@@ -70,7 +70,7 @@
 <p>类型</p>
 <p>植物</p> -->
 </div>
-  <script src="../js/food.js"></script> 
+  <script src="../js/logo.js"></script> 
   <script src="../js/pictureOcr.js"></script>  
 </body>
 

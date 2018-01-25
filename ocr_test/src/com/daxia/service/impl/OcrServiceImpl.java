@@ -234,6 +234,8 @@ public class OcrServiceImpl implements OcrService{
         	type=Dictionary.BOTANY_PATH;
         }else if(num==1){
         	type=Dictionary.ANIMAL_PATH;
+        }else if(num==2){
+        	type=Dictionary.CAR_PATH;
         }else{
         	type=Dictionary.BOTANY_PATH;
         }
@@ -288,14 +290,20 @@ public class OcrServiceImpl implements OcrService{
 		
 		
 	}
-	public  Respon< List<FoodDTO>> foodDTOOCR(String path) throws Exception{
+	public  Respon< List<FoodDTO>> foodDTOOCR(String path,int num) throws Exception{
 
 		long beginTime =System.currentTimeMillis();
         byte[] imgData = FileUtil.readFileByBytes(path);
         String imgStr = Base64Util.encode(imgData);
         String params = URLEncoder.encode("image", "UTF-8") + "=" + URLEncoder.encode(imgStr, "UTF-8");
-    
-       String vehicleLicensePath=configMapper.selectByCode(Dictionary.FOOD_PATH);
+    String type=Dictionary.FOOD_PATH;
+        if(num==0){
+        	//type=Dictionary.FOOD_PATH;
+        }else if(num==1){
+        	type=Dictionary.LOGO_PATH;
+        	params+="&custom_lib=" + false;
+        }
+       String vehicleLicensePath=configMapper.selectByCode(type);
        log.info("url:"+vehicleLicensePath);
        OcrAccount ocr=    this.getOcrAccount();
         String result = HttpUtil.post(vehicleLicensePath, ocr.getAccess_token(), params);
@@ -347,7 +355,7 @@ public class OcrServiceImpl implements OcrService{
 		
 	}
 	@Override
-	public Respon<List<FoodDTO>> getFoodList(MultipartFile file) {
+	public Respon<List<FoodDTO>> getFoodList(MultipartFile file,int num) {
 
 		// TODO Auto-generated method stub
 		String path;
@@ -359,7 +367,7 @@ public class OcrServiceImpl implements OcrService{
 				//识别
 //				OcrAccount ocr=this. getOcrAccount();
 				try {
-					resp=	foodDTOOCR(path);
+					resp=	foodDTOOCR(path, num);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

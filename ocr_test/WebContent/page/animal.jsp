@@ -32,7 +32,7 @@
 <form id="BotanyDTOcamera" method="post" enctype="multipart/form-data">
  <input type="file" accept="image/*" capture="camera" style="visibility: hidden;" id="fileImage">
  </form>
-<button  class="btn btn-primary camerabutton" onclick="tophoto()">拍照</button>
+<button  class="btn btn-default camerabutton" onclick="tophoto()"><span class="iconfont infoFonticon">&#xe61b;</span></button>
 
 </div>
 <div class="infoDiv">

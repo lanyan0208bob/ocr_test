@@ -27,7 +27,7 @@ public interface OcrService {
 	String savePicture(MultipartFile file) throws IllegalStateException, IOException;
 	
 	Respon<List<BotanyDTO>> getBotanyDTOList(MultipartFile file,int num);
-	Respon<List<FoodDTO>> getFoodList(MultipartFile file);
+	Respon<List<FoodDTO>> getFoodList(MultipartFile file,int num);
 	
 	/**
 	 * 
